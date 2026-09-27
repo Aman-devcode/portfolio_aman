@@ -8,12 +8,30 @@ export default defineConfig({
     cssMinify: 'esbuild',
     rollupOptions: {
       output: {
-        manualChunks: {
-          react: ['react', 'react-dom', 'react-router-dom'],
-          icons: ['lucide-react']
+        manualChunks: (id) => {
+          if (id.includes('node_modules/react/') ||
+              id.includes('node_modules/react-dom/') ||
+              id.includes('node_modules/react-router-dom/')) {
+            return 'react';
+          }
+
+          if (id.includes('node_modules/lucide-react/')) {
+            return 'icons';
+          }
         }
       }
     }
   },
+
   plugins: [react(), tailwindcss()],
-  server: { proxy: { '/api': 'http://127.0.0.1:3001', '/ws': { target: 'ws://127.0.0.1:3001', ws: true } } } });
+
+  server: {
+    proxy: {
+      '/api': 'http://127.0.0.1:3001',
+      '/ws': {
+        target: 'ws://127.0.0.1:3001',
+        ws: true
+      }
+    }
+  }
+});

@@ -1,4 +1,4 @@
-import { ArrowUpRight, Code2, BriefcaseBusiness, Mail, Braces, Server, Database, BrainCircuit, Wrench, Bot, Network } from 'lucide-react';
+import { ArrowUpRight,  Mail, Braces, Server, Database, BrainCircuit, Wrench, Bot, Network } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button, TextLink } from '../../components/ui/Button';
 import { Card } from '../../components/ui/Card';
