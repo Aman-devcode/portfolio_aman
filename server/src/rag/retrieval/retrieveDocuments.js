@@ -6,8 +6,6 @@ import { createVectorStore } from '../vectorStore/vectorStore.js';
 
 import { createHash } from 'node:crypto';
 
-import { readFileSync } from 'node:fs';
-
 import { getCache, setCache } from '../../redis/redisClient.js';
 
 import { redisKeys } from '../../redis/redisKeys.js';
@@ -22,34 +20,26 @@ import {
 } from '../../observability/metrics.js';
 
 
-const portfolioDataUrl = new URL(
-  '../../../../src/data/portfolioData.json',
-  import.meta.url
-);
-
-const portfolioData = JSON.parse(
-  readFileSync(portfolioDataUrl, 'utf8')
-);
-
-const projectIdentifiers = Array.isArray(portfolioData.projects)
-  ? portfolioData.projects
-      .flatMap(project => [
-        project.title,
-        project.slug,
-        project.id
-      ])
-      .filter(
-        value =>
-          typeof value === 'string' &&
-          value.trim().length > 0
-      )
-      .map(value =>
-        value
-          .trim()
-          .normalize('NFKC')
-          .toLowerCase()
-      )
-  : [];
+/*
+ * Known portfolio project identifiers.
+ *
+ * These are kept here instead of reading
+ * frontend portfolioData.json so the backend
+ * can run independently inside Docker/Render.
+ */
+const projectIdentifiers = [
+  'weathergpt',
+  'ai coding platform',
+  'ai-coding-platform',
+  'full stack e-commerce platform',
+  'full-stack-e-commerce-platform',
+  'rest countries explorer',
+  'rest-country',
+  'foodie hamburger',
+  'foodieburger',
+  'focus on today',
+  'focous-on-today'
+];
 
 
 function containsProjectIdentifier(query) {
