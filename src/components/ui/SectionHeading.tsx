@@ -1,0 +1,1 @@
+﻿export function SectionHeading({ eyebrow, title, description, level = 2 }: { eyebrow: string; title: string; description?: string; level?: 1 | 2 }) { const Heading = level === 1 ? 'h1' : 'h2'; return <div className="section-heading"><span className="eyebrow">{eyebrow}</span><Heading>{title}</Heading>{description && <p>{description}</p>}</div>; }

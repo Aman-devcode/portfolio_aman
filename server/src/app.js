@@ -1,0 +1,32 @@
+import express from 'express';
+import cors from 'cors';
+import chatRoutes from './routes/chatRoutes.js';
+import githubRoutes from './github/githubRoutes.js';
+import { errorHandler, notFound } from './middleware/errorHandler.js';
+import { getRedisHealth } from './redis/redisHealth.js';
+import { requestId, requestMetrics } from './observability/requestMetrics.js';
+import { healthSnapshot } from './observability/health.js';
+import { metricsSnapshot } from './observability/metrics.js';
+import { trustProxy } from './security/clientIdentity.js';
+
+const app = express();
+app.set('trust proxy', trustProxy);
+const allowedOrigins = (process.env.CLIENT_URL || 'http://localhost:5173').split(',').map(value => value.trim()).filter(Boolean);
+app.use(requestId);
+app.use(requestMetrics);
+app.use(cors({ origin(origin, callback) {
+  if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
+  const error = new Error('Origin not allowed.');
+  error.status = 403;
+  callback(error);
+} }));
+app.use(express.json({ limit: '12kb' }));
+app.get('/api/health', (_req, res) => res.json({ ...healthSnapshot(), redis: getRedisHealth() }));
+app.get('/api/health/live', (_req, res) => res.json({ status: 'ok' }));
+app.get('/api/health/ready', (_req, res) => { const health = healthSnapshot(); res.status(health.status === 'ok' ? 200 : 503).json(health); });
+app.get('/api/metrics', (_req, res) => res.json(metricsSnapshot()));
+app.use('/api/chat', chatRoutes);
+app.use('/api/github', githubRoutes);
+app.use(notFound);
+app.use(errorHandler);
+export default app;

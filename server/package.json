@@ -1,0 +1,20 @@
+{
+  "name": "aman-portfolio-api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "rag:ingest": "node src/rag/ingestion/ingestPortfolio.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@google/genai": "latest",
+    "cors": "latest",
+    "dotenv": "latest",
+    "express": "latest",
+    "express-rate-limit": "latest",
+    "ioredis": "^5.6.1",
+    "ws": "^8.18.0"
+  }
+}

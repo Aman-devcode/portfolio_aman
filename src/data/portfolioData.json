@@ -1,0 +1,328 @@
+{
+  "about": {
+    "name": "Aman Kumar Pandit",
+    "roles": [
+      "Full Stack Developer",
+      "MERN Stack Developer",
+      "Backend Developer",
+      "AI/LLM Developer",
+      "AI Agent Developer"
+    ],
+    "summary": "Full Stack Developer focused on MERN, backend engineering and AI-powered applications.",
+    "intro": "I build web applications across the frontend and backend, with an interest in dependable systems and practical AI features."
+  },
+  "skills": [
+    {
+      "title": "Frontend",
+      "items": [
+        "React",
+        "TypeScript",
+        "Tailwind CSS"
+      ]
+    },
+    {
+      "title": "Backend",
+      "items": [
+        "Node.js",
+        "Express.js"
+      ]
+    },
+    {
+      "title": "Database",
+      "items": [
+        "MongoDB",
+        "Mongoose",
+        "Redis"
+      ]
+    },
+    {
+      "title": "AI",
+      "items": [
+        "Gemini API",
+        "RAG",
+        "Embeddings",
+        "Vector Database"
+      ]
+    },
+    {
+      "title": "Tools",
+      "items": [
+        "GitHub",
+        "Vite"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "weathergpt",
+      "slug": "weathergpt",
+      "title": "WeatherGPT",
+      "shortDescription": "Project description not provided.",
+      "category": "Details pending",
+      "featured": true,
+      "technologies": []
+    },
+    {
+      "id": "ai-coding-platform",
+      "slug": "ai-coding-platform",
+      "title": "AI Coding Platform",
+      "shortDescription": "Project description not provided.",
+      "category": "Details pending",
+      "featured": true,
+      "technologies": []
+    },
+    {
+      "id": "full-stack-e-commerce-platform",
+      "slug": "full-stack-e-commerce-platform",
+      "title": "Full Stack E-Commerce Platform",
+      "shortDescription": "Project description not provided.",
+      "category": "Details pending",
+      "featured": true,
+      "technologies": []
+    },
+    {
+      "id": "rest-countries",
+      "slug": "rest-countries",
+      "title": "Rest Countries Explorer",
+      "shortDescription": "A responsive country explorer with live REST API data, search, region filtering, country details, border-country navigation and persistent dark mode.",
+      "description": "A vanilla HTML, CSS and JavaScript project that consumes the countries.dev countries API and turns country data into searchable, filterable cards with dedicated country detail views.",
+      "category": "Frontend / API",
+      "featured": true,
+      "technologies": [
+        {
+          "name": "HTML5",
+          "category": "Frontend"
+        },
+        {
+          "name": "CSS3",
+          "category": "Frontend"
+        },
+        {
+          "name": "JavaScript",
+          "category": "Frontend"
+        },
+        {
+          "name": "REST API",
+          "category": "Backend"
+        }
+      ],
+      "features": [
+        "Fetches country data from the countries.dev REST API",
+        "Search countries by name or native name",
+        "Filter countries by region",
+        "Dedicated country detail page",
+        "Displays population, region, sub-region, capital, TLD, currencies and languages",
+        "Border-country navigation",
+        "Light/dark mode with localStorage persistence",
+        "Responsive layout for desktop, tablet and mobile"
+      ],
+      "problem": "Country data can be difficult to browse efficiently when presented as raw API responses.",
+      "solution": "Provides a responsive UI that transforms API data into searchable country cards and detailed country pages with filtering, navigation and theme persistence.",
+      "engineeringDecisions": [
+        "Kept the project framework-free with semantic HTML, CSS and vanilla JavaScript",
+        "Separated listing and country-detail logic into script.js and country.js",
+        "Used URL query parameters to identify the selected country",
+        "Used localStorage to persist the selected theme"
+      ],
+      "challenges": [
+        "Handling asynchronous country data before rendering the UI",
+        "Mapping API data into reusable country cards and detail fields",
+        "Handling missing country fields with fallback values"
+      ],
+      "learnings": [
+        "Working with REST API responses in vanilla JavaScript",
+        "DOM rendering and client-side filtering",
+        "URLSearchParams and localStorage",
+        "Responsive CSS layout"
+      ],
+      "futureImprovements": [
+        "Add pagination or lazy rendering for large country lists",
+        "Add stronger API error and loading states",
+        "Add accessibility-focused keyboard and screen-reader refinements"
+      ],
+      "liveUrl": "https://aman-devcode.github.io/rest-country/"
+    },
+    {
+      "id": "foodie-hamburger",
+      "slug": "foodie-hamburger",
+      "title": "Foodie Hamburger",
+      "shortDescription": "A responsive food landing page featuring burger collections, smooth section navigation and a mobile hamburger menu.",
+      "description": "A responsive food-focused landing page built with semantic HTML and CSS, with JavaScript-powered mobile navigation and anchored sections for different burger collections and deals.",
+      "category": "Frontend",
+      "featured": true,
+      "technologies": [
+        {
+          "name": "HTML5",
+          "category": "Frontend"
+        },
+        {
+          "name": "CSS3",
+          "category": "Frontend"
+        },
+        {
+          "name": "JavaScript",
+          "category": "Frontend"
+        }
+      ],
+      "features": [
+        "Responsive food landing page",
+        "Mobile hamburger navigation",
+        "Top Picks section",
+        "Whopper section",
+        "Stunner Menu section",
+        "New Foodie Collection section",
+        "Deal of the Day section",
+        "Smooth section navigation",
+        "Responsive layouts for smaller screens"
+      ],
+      "problem": "Presenting multiple food collections in a single responsive landing page while keeping navigation simple across desktop and mobile layouts.",
+      "solution": "Built a responsive single-page food interface with anchored navigation, dedicated food sections and a JavaScript-controlled mobile menu.",
+      "engineeringDecisions": [
+        "Used semantic HTML sections for the landing-page content",
+        "Used CSS media queries for responsive navigation and typography",
+        "Used vanilla JavaScript to open and close the mobile navigation menu",
+        "Kept the implementation framework-free"
+      ],
+      "challenges": [
+        "Designing navigation that works across desktop and mobile breakpoints",
+        "Keeping large food imagery responsive across screen sizes",
+        "Handling mobile menu open and close interactions"
+      ],
+      "learnings": [
+        "Responsive CSS layouts and media queries",
+        "DOM event handling with vanilla JavaScript",
+        "Mobile navigation patterns",
+        "Structuring a single-page landing experience"
+      ],
+      "futureImprovements": [
+        "Add individual product cards with pricing and CTA actions",
+        "Add accessible keyboard navigation for the mobile menu",
+        "Add optimized image loading and modern image formats"
+      ],
+      "liveUrl": "https://aman-devcode.github.io/foodieburger/"
+    },
+    {
+      "id": "focus-on-today",
+      "slug": "focus-on-today",
+      "title": "Focus on Today",
+      "shortDescription": "A simple daily goal-tracking web app with progress tracking, completion states and reset functionality.",
+      "description": "A focused productivity app built with HTML, CSS and vanilla JavaScript that lets users enter three daily goals, mark them complete and track progress visually.",
+      "category": "Frontend",
+      "featured": true,
+      "technologies": [
+        {
+          "name": "HTML5",
+          "category": "Frontend"
+        },
+        {
+          "name": "CSS3",
+          "category": "Frontend"
+        },
+        {
+          "name": "JavaScript",
+          "category": "Frontend"
+        }
+      ],
+      "features": [
+        "Add three daily goals",
+        "Mark goals as completed",
+        "Visual completion progress from 0/3 to 3/3",
+        "Validation when goals are not fully entered",
+        "Reset all goals with confirmation",
+        "Responsive layout for smaller screens",
+        "Animated rotating sun icon"
+      ],
+      "problem": "Daily tasks can become difficult to track when there is no simple visual indication of progress.",
+      "solution": "Provides a minimal three-goal daily checklist with completion states, a progress bar and a reset flow.",
+      "engineeringDecisions": [
+        "Used semantic HTML with a small, framework-free structure",
+        "Used vanilla JavaScript DOM event listeners for goal completion and reset behavior",
+        "Used CSS transitions and keyframe animation for visual feedback",
+        "Kept the interface responsive with a mobile breakpoint"
+      ],
+      "challenges": [
+        "Preventing progress updates until all three goals are entered",
+        "Keeping completed goal state and progress count synchronized",
+        "Resetting inputs, completion states and progress consistently"
+      ],
+      "learnings": [
+        "DOM querying and event handling",
+        "Dynamic progress-bar updates",
+        "Conditional UI state with CSS classes",
+        "Responsive CSS and keyframe animations"
+      ],
+      "futureImprovements": [
+        "Persist goals with localStorage",
+        "Allow more than three goals",
+        "Add editable goal deletion and reordering",
+        "Add keyboard and accessibility refinements"
+      ],
+      "liveUrl": "https://aman-devcode.github.io/focous-on-Today/"
+    }
+  ],
+  "engineering": [
+    {
+      "slug": "authentication",
+      "title": "Authentication",
+      "description": "Exploring identity, session and access control patterns for web applications.",
+      "technologies": [
+        "Node.js",
+        "Express.js",
+        "MongoDB"
+      ]
+    },
+    {
+      "slug": "api-design",
+      "title": "API Design",
+      "description": "Working with clear API boundaries and predictable request and response contracts.",
+      "technologies": [
+        "Node.js",
+        "Express.js"
+      ]
+    },
+    {
+      "slug": "caching",
+      "title": "Caching",
+      "description": "Exploring Redis as a way to reduce repeated work in application services.",
+      "technologies": [
+        "Redis",
+        "Node.js"
+      ]
+    },
+    {
+      "slug": "real-time-systems",
+      "title": "Real-time Systems",
+      "description": "Studying approaches to deliver timely updates in connected applications.",
+      "technologies": [
+        "Node.js",
+        "React"
+      ]
+    },
+    {
+      "slug": "database-design",
+      "title": "Database Design",
+      "description": "Working with document data models and persistence using MongoDB.",
+      "technologies": [
+        "MongoDB",
+        "Mongoose"
+      ]
+    },
+    {
+      "slug": "ai-systems",
+      "title": "AI Systems",
+      "description": "Exploring LLM-powered applications, retrieval and agent workflows.",
+      "technologies": [
+        "Gemini API",
+        "RAG",
+        "Embeddings"
+      ]
+    }
+  ],
+  "experience": [],
+  "contact": {
+    "email": "amanbr32060389@gmail.com",
+    "github": "https://github.com/Aman-devcode",
+    "linkedin": "https://www.linkedin.com/in/amankumarpandit/",
+    "route": "/contact"
+  }
+}

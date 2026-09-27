@@ -1,0 +1,39 @@
+{
+  "name": "aman-portfolio",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build && node scripts/generate-seo-files.mjs",
+    "test": "vitest run",
+    "test:server": "npm --prefix server test",
+    "preview": "vite preview",
+    "server:dev": "npm --prefix server run dev",
+    "server:start": "npm --prefix server start",
+    "rag:ingest": "npm --prefix server run rag:ingest",
+    "rag:test": "npm --prefix server test",
+    "github:test": "npm --prefix server test",
+    "dev:all": "node scripts/dev-all.mjs"
+  },
+  "dependencies": {
+    "@react-three/drei": "latest",
+    "@react-three/fiber": "latest",
+    "lucide-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-router-dom": "latest",
+    "three": "latest"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@vitejs/plugin-react": "latest",
+    "jsdom": "^29.1.1",
+    "tailwindcss": "latest",
+    "typescript": "latest",
+    "vite": "latest",
+    "vitest": "^5.0.1"
+  }
+}
