@@ -63,6 +63,42 @@ function containsProjectIdentifier(query) {
 }
 
 
+/*
+ * Project queries can return multiple chunks
+ * belonging to the same project.
+ *
+ * Keep only the highest-scoring chunk for each
+ * project so the AI does not repeat the same
+ * project multiple times in its response.
+ */
+function deduplicateProjectResults(items) {
+  const map = new Map();
+
+  for (const item of items) {
+    const identity = (
+      item.slug ||
+      item.title ||
+      item.source ||
+      ''
+    )
+      .trim()
+      .toLowerCase();
+
+    if (!identity) {
+      continue;
+    }
+
+    const existing = map.get(identity);
+
+    if (!existing || item.score > existing.score) {
+      map.set(identity, item);
+    }
+  }
+
+  return Array.from(map.values());
+}
+
+
 export async function retrieveRelevantDocuments(
   query,
   {
@@ -176,6 +212,12 @@ export async function retrieveRelevantDocuments(
   incrementMetric('rag.retrievals');
 
 
+  /*
+   * Cached project results can also contain
+   * multiple chunks for the same project.
+   *
+   * Deduplicate cached results before returning them.
+   */
   if (
     Array.isArray(cached) &&
     cached.every(
@@ -189,6 +231,10 @@ export async function retrieveRelevantDocuments(
       'rag.cache.hits'
     );
 
+    const cachedResult = projectIntent
+      ? deduplicateProjectResults(cached)
+      : cached;
+
     observeDuration(
       'rag.retrieval',
       performance.now() -
@@ -199,9 +245,9 @@ export async function retrieveRelevantDocuments(
       'rag.retrieval.completed',
       {
         cacheHit: true,
-        resultCount: cached.length,
+        resultCount: cachedResult.length,
         noRelevantContext:
-          cached.length === 0,
+          cachedResult.length === 0,
         durationMs: Math.round(
           performance.now() -
             retrievalStarted
@@ -212,7 +258,7 @@ export async function retrieveRelevantDocuments(
       }
     );
 
-    return cached;
+    return cachedResult;
   }
 
 
@@ -395,9 +441,26 @@ export async function retrieveRelevantDocuments(
   );
 
 
+  /*
+   * Remove duplicate project chunks.
+   *
+   * Example:
+   *
+   * Rest Countries Explorer - chunk 1
+   * Rest Countries Explorer - chunk 2
+   *
+   * becomes:
+   *
+   * Rest Countries Explorer - highest scoring chunk
+   */
+  const deduplicated = projectIntent
+    ? deduplicateProjectResults(normalized)
+    : normalized;
+
+
   await cacheSet(
     key,
-    normalized,
+    deduplicated,
     cacheTtlSeconds
   );
 
@@ -409,9 +472,9 @@ export async function retrieveRelevantDocuments(
     'rag.retrieval.completed',
     {
       cacheHit: false,
-      resultCount: normalized.length,
+      resultCount: deduplicated.length,
       noRelevantContext:
-        normalized.length === 0,
+        deduplicated.length === 0,
       durationMs: Math.round(
         performance.now() -
           retrievalStarted
@@ -423,5 +486,5 @@ export async function retrieveRelevantDocuments(
   );
 
 
-  return normalized;
+  return deduplicated;
 }
